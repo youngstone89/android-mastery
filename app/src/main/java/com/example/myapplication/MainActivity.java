@@ -6,6 +6,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -17,6 +18,7 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import com.example.myprotobuf.UserInfo.Person;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
+
+        Person person = Person.newBuilder()
+                .setId(1)
+                .setName("youngstone")
+                .setEmail("youngstone89@icloud.com")
+                .build();
+        Log.e("got protobuf", person.toString());
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
